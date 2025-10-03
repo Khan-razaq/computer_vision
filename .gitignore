@@ -1,0 +1,9 @@
+# Compiled binaries
+read_image
+*.o
+
+# VS Code settings
+.vscode/
+
+# OS files
+*.DS_Store
