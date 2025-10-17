@@ -1,13 +1,18 @@
-#include<iostream>
+#include <iostream>
+#include <filesystem>
+
 #include <opencv2/opencv.hpp>
+
 using namespace std;
+using namespace cv;
 
 int main(){
-    cv::Mat image = cv::imread("images/kabah.jpeg", cv::IMREAD_COLOR);
+    string image_path=samples::findFile("images/kabah.jpeg");
+    Mat image = imread(image_path, IMREAD_COLOR);
     if (image.empty()) {
-        std::cerr << "Error: Could not open or find the image." << std::endl;
+        cerr << "Error: Could not open or find the image." << image_path << endl;
         return -1;
     }
-    cv::imshow("Image Window", image);
-    cv::waitKey(0);
+    imshow("Image Window", image);
+    waitKey(0);
 }
