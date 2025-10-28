@@ -19,7 +19,7 @@ int main(){
 	cap.set(cv::CAP_PROP_FRAME_HEIGHT, 480);
 	//cap.set(cv::CAP_PROP_FPS, 30);
 	
-	cv::Mat frame, flipped_frame, display_frame, custom_gray;
+	cv::Mat frame, flipped_frame, display_frame, custom_gray, sepiaTone_frame;
 	int mode = 0;
     while(true){
     	cap >> frame;
@@ -37,6 +37,10 @@ int main(){
                 customGrayFilter(flipped_frame, custom_gray);
                 display_frame = custom_gray;
                 break;
+            case 3:
+                sepiaToneFilter(flipped_frame, sepiaTone_frame);
+                display_frame = sepiaTone_frame;
+                break;
             default:
                 display_frame = flipped_frame;
         }
@@ -47,7 +51,12 @@ int main(){
         if(key == 'q') break;
         else if(key == 'g') mode = 1;
         else if(key == 'h') mode = 2;
+        else if(key == 'i') mode = 3;
         else if(key == 'o') mode = 0;
+        else if(key == 's') {
+            cv::imwrite("screenshot.jpg", display_frame);
+            cout << "Screenshot saved!" << endl;
+        }
     }
     
     return 0;

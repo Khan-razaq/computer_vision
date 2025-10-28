@@ -5,5 +5,6 @@
 
 int customGrayFilter(cv::Mat &src, cv::Mat &dst);
 int grayFilter(cv::Mat &src, cv::Mat &dst);
+int sepiaToneFilter(cv::Mat &src, cv::Mat &dst);
 
 #endif
